@@ -293,10 +293,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        333,
-                        334
+                        384,
+                        385
                       ],
-                      "referencedDeclaration": 333,
+                      "referencedDeclaration": 384,
                       "src": "149:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -379,7 +379,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 330,
+                        "referencedDeclaration": 381,
                         "src": "206:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -853,10 +853,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        333,
-                        334
+                        384,
+                        385
                       ],
-                      "referencedDeclaration": 333,
+                      "referencedDeclaration": 384,
                       "src": "149:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -939,7 +939,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 330,
+                        "referencedDeclaration": 381,
                         "src": "206:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1189,15 +1189,45 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
-    "1557114437032": {
+    "1557139497597": {
       "events": {},
       "links": {},
-      "address": "0x86B4FF4403bDa85111e9e383E624098A432c00cD",
-      "transactionHash": "0x7241a63cfa5cd3fd641cfe94cb75d91162c9f3a35ff77b431bffc8ac1b0526aa"
+      "address": "0xdc3f0051a171431063e85DfB7a2cf6D5E6A27880",
+      "transactionHash": "0xfbe161128c68b070176ad4d2599427b933e19ac4f1e3a182faed14dd1b6777a0"
+    },
+    "1557139763655": {
+      "events": {},
+      "links": {},
+      "address": "0x74d5e58e4189EF510B20c2025069598FA6ca7495",
+      "transactionHash": "0x5cf2589a06294c88469a7f24d88791468a7fe8d30a7ffb5b625889d0fc5c8743"
+    },
+    "1557139832398": {
+      "events": {},
+      "links": {},
+      "address": "0x316b47b060AadAb334cBa1BaEde613eAdEb8e5F3",
+      "transactionHash": "0x9b97a813c2782131e1b89ce446ec319c7233491871c6a9874060de92d01433f7"
+    },
+    "1557140152459": {
+      "events": {},
+      "links": {},
+      "address": "0x2139BB541C3Df88490955894332B92929f041f24",
+      "transactionHash": "0xbe383c2d6bfa03e76393197402635608e6de15808f5f8008c32a8df1cacc078f"
+    },
+    "1557140466087": {
+      "events": {},
+      "links": {},
+      "address": "0x5157e4B8C22eD303432e3B512Ecdc05ED2D71ec3",
+      "transactionHash": "0xb3e54bf2e1b8f35f8bc56ff30a55fecd9b25e99c72900b111d3c67c59397d5eb"
+    },
+    "1557140726677": {
+      "events": {},
+      "links": {},
+      "address": "0x343260b12E77FF24B711019eC22C982b932532A8",
+      "transactionHash": "0x819674f08c0e487ffb13c0b6a4cd0c34a49c65e39b8589e6dfd33c76f5cf00e5"
     }
   },
   "schemaVersion": "3.0.8",
-  "updatedAt": "2019-05-06T03:48:32.614Z",
+  "updatedAt": "2019-05-06T11:05:35.604Z",
   "devdoc": {
     "methods": {}
   },

@@ -15,6 +15,8 @@ App = {
         petTemplate.find('.pet-age').text(data[i].age);
         petTemplate.find('.pet-location').text(data[i].location);
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        petTemplate.find('.btn-unadopt').attr('data-id', data[i].id);
+        petTemplate.find('.btn-transfer').attr('data-id', data[i].id);
 
         petsRow.append(petTemplate.html());
       }
@@ -48,7 +50,16 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON('Adoption.json', function(data) {
+    $.getJSON('OwnedUpgradeabilityProxy.json', function(data) {
+      // Get the necessary contract artifact file and instantiate it with truffle-contract
+      var ProxyArtifact = data;
+      App.contracts.Proxy = TruffleContract(ProxyArtifact);
+
+      // Set the provider for our contract
+      App.contracts.Proxy.setProvider(App.web3Provider);
+    });
+
+    $.getJSON('Adoption_F1.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
       var AdoptionArtifact = data;
       App.contracts.Adoption = TruffleContract(AdoptionArtifact);
@@ -64,19 +75,35 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
+    $(document).on('click', '.btn-unadopt', App.handleUnadopt);
+    $(document).on("click", ".btn-transfer", function () {
+      var petId = $(this).data('id');
+      $(".modal-body #petId").val(petId);
+    });
+    $(document).on('click', '.btn-sendTransfer', App.handleTransfer);
   },
 
   markAdopted: function(adopters, account) {
     var adoptionInstance;
 
-    App.contracts.Adoption.deployed().then(function(instance) {
-      adoptionInstance = instance;
+    App.contracts.Proxy.deployed().then(function(proxy) {
+      adoptionInstance = App.contracts.Adoption.at(proxy.address);
 
       return adoptionInstance.getAdopters.call();
     }).then(function(adopters) {
       for (i = 0; i < adopters.length; i++) {
+        $('.panel-pet').eq(i).find('.pet-adopter').text(adopters[i].substring(0, 21));
+        $('.panel-pet').eq(i).find('.pet-adopter-end').text(adopters[i].substring(21, 42));
         if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
-          $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
+          $('.panel-pet').eq(i).find('button').eq(2).show();
+          $('.panel-pet').eq(i).find('button').eq(1).show();
+          $('.panel-pet').eq(i).find('button').eq(0).hide();
+        } else {
+          $('.panel-pet').eq(i).find('.pet-adopter').text("None");
+          $('.panel-pet').eq(i).find('.pet-adopter-end').text("");
+          $('.panel-pet').eq(i).find('button').eq(2).hide();
+          $('.panel-pet').eq(i).find('button').eq(1).hide();
+          $('.panel-pet').eq(i).find('button').eq(0).show();
         }
       }
     }).catch(function(err) {
@@ -97,11 +124,64 @@ App = {
 
       var account = accounts[0];
 
-      App.contracts.Adoption.deployed().then(function(instance) {
-        adoptionInstance = instance;
+      App.contracts.Proxy.deployed().then(function(proxy) {
+        adoptionInstance = App.contracts.Adoption.at(proxy.address);
 
         // Execute adopt as a transaction by sending account
         return adoptionInstance.adopt(petId, {from: account});
+      }).then(function(result) {
+        return App.markAdopted();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
+  },
+
+  handleUnadopt: function(event) {
+    event.preventDefault();
+
+    var petId = parseInt($(event.target).data('id'));
+    var adoptionInstance;
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.Proxy.deployed().then(function(proxy) {
+        adoptionInstance = App.contracts.Adoption.at(proxy.address);
+
+        // Execute adopt as a transaction by sending account
+        return adoptionInstance.transferOwnership(petId, '0x0000000000000000000000000000000000000000', {from: account});
+      }).then(function(result) {
+        return App.markAdopted();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
+  },
+
+  handleTransfer: function(event) {
+    event.preventDefault();
+
+    var petId = parseInt($(".modal-body #petId").val());
+    var dest = String($(".modal-body #recipientAddress").val());
+    var adoptionInstance;
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.Proxy.deployed().then(function(proxy) {
+        adoptionInstance = App.contracts.Adoption.at(proxy.address);
+
+        // Execute adopt as a transaction by sending account
+        return adoptionInstance.transferOwnership(petId, dest, {from: account});
       }).then(function(result) {
         return App.markAdopted();
       }).catch(function(err) {
