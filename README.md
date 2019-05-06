@@ -49,13 +49,19 @@ Once a pet is adopted, only the owner/holder of the pet can invoke the additiona
 ## HARD FEATURES:
 
 6- Allow two pets owned by the same address to breed a new pet.
+
   a- Pets should have a reference to their children and vice versa
+  
   b- The adopter must have had both pets for at least 1 hour before being able to breed the two pets. Tip: Time can be “fast-forwarded” in ganache to help write unit tests for this
+  
   c- The adopter should also be the “owner” of the newly bred pet. A random name can be picked for the bred pet.
 
 7- Let the adopter temporarily let another address “borrow” the pet for some duration. The person who borrowed the pet should not be able to transfer ownership of the pet but is allowed to have another address “re-borrow” for the remaining duration
+  
   a- A (owner) -> B (1 week) 
+  
   b- 2 days pass. B -> C (5 days remaining)
+  
 Frontend should reflect the owner of the pet and the current holder of the pet and what duration is left.
 
 8- Allow pets to be fed. If they are not fed by the adopter within 1 day, the pet is dead (“burned”) and no action can be taken on the dead pet.
