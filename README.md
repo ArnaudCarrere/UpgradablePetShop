@@ -25,8 +25,11 @@ https://medium.com/quillhash/how-to-write-upgradable-smart-contracts-in-solidity
 
 ## Requirements:
 Only the creator of the contract should be allowed to upgrade the Adoption contract.
+
 Frontend should appropriately reflect the new features implemented.
+
 Once a pet is adopted, only the owner/holder of the pet can invoke the additional features on that pet.
+
 100% Test Coverage
 
 
