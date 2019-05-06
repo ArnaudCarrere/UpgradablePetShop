@@ -5,17 +5,13 @@ https://truffleframework.com/tutorials/pet-shop
 
 ## Goal
 Update the Adoptions contract such that the business logic is abstracted into a Library and is upgradable. Each new feature is implemented as an upgrade.
-
-To compile contracts
+- To compile contracts
 `truffle compile`
-
-To migrate contracts in Ganache network
+- To migrate contracts in Ganache network
 `truffle migrate`
-
-To test contracts
+- To test contracts
 `truffle test`
-
-To start server
+- To start server
 `npm run dev`
 
 ## Resources : 
@@ -24,13 +20,10 @@ https://blog.zeppelinos.org/proxy-patterns/
 https://medium.com/quillhash/how-to-write-upgradable-smart-contracts-in-solidity-d8f1b95a0e9a
 
 ## Requirements:
-Only the creator of the contract should be allowed to upgrade the Adoption contract.
-
-Frontend should appropriately reflect the new features implemented.
-
-Once a pet is adopted, only the owner/holder of the pet can invoke the additional features on that pet.
-
-100% Test Coverage
+- Only the creator of the contract should be allowed to upgrade the Adoption contract.
+- Frontend should appropriately reflect the new features implemented.
+- Once a pet is adopted, only the owner/holder of the pet can invoke the additional features on that pet.
+- 100% Test Coverage
 
 ## EASY FEATURES:
 
