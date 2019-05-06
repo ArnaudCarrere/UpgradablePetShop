@@ -1,32 +1,27 @@
 pragma solidity ^0.5.0;
 
-import "./Ownable.sol";
-import "./Adopters.sol";
+/**
+ * @title Proxy
+ * @dev Gives the possibility to delegate any call to a foreign implementation.
+ */
+contract Proxy {
+  /**
+  * @dev Tells the address of the implementation where every call will be delegated.
+  * @return address of the implementation to which it will be delegated
+  */
+  function implementation() public view returns (address);
 
-contract Proxy is Adopters , Ownable {
-
-  event Upgraded(address indexed implementation);
-
-  address public _implementation;
-
-  function implementation() public view returns (address) {
-    return _implementation;
-  }
-
-  function upgradeTo(address impl) public onlyOwner {
-    require(_implementation != impl);
-    _implementation = impl;
-    emit Upgraded(impl);
-  }
-
+  /**
+  * @dev Fallback function allowing to perform a delegatecall to the given implementation.
+  * This function will return whatever the implementation call returns
+  */
   function () payable external {
     address _impl = implementation();
     require(_impl != address(0));
-    bytes memory data = msg.data;
 
     assembly {
       let ptr := mload(0x40)
-      calldatacopy(ptr,0,calldatasize)
+      calldatacopy(ptr, 0, calldatasize)
       let result := delegatecall(gas, _impl, ptr, calldatasize, 0, 0)
       let size := returndatasize
       returndatacopy(ptr, 0, size)
@@ -36,5 +31,4 @@ contract Proxy is Adopters , Ownable {
       default { return(ptr, size) }
     }
   }
-
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Pete's Pet Shop</title>
+    <title>BastAr's Pet Shop</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,9 +21,29 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Pete's Pet Shop</h1>
+          <h1 class="text-center">BastAr's Pet Shop</h1>
           <hr/>
           <br/>
+        </div>
+      </div>
+
+      <!-- transfer modal -->
+      <div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="transferModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label class="col-form-label">Recipient Address</label>
+                  <input type="text" class="form-control" id="recipientAddress">
+                  <input class="hidden" type="text" id="petId" value=""/>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-sendTransfer"" data-dismiss="modal">Transfer</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -43,8 +63,12 @@
             <br/><br/>
             <strong>Breed</strong>: <span class="pet-breed">Golden Retriever</span><br/>
             <strong>Age</strong>: <span class="pet-age">3</span><br/>
-            <strong>Location</strong>: <span class="pet-location">Warren, MI</span><br/><br/>
+            <strong>Location</strong>: <span class="pet-location">Warren, MI</span><br/>
+            <strong>Adopter</strong>: <span class="pet-adopter">0x6907dCd77398778Dd7554d61e5338D908C465d8C</span><br/>
+            <span class="pet-adopter-end">0x6907dCd77398778Dd7554d61e5338D908C465d8C</span><br/><br/>
             <button class="btn btn-default btn-adopt" type="button" data-id="0">Adopt</button>
+            <button class="btn btn-default btn-transfer" type="button" data-id="0" data-dest="0x0000000000000000000000000000000000000000" data-toggle="modal" data-target="#transferModal">Transfer</button>
+            <button class="btn btn-default btn-unadopt" type="button" data-id="0">Unadopt</button>
           </div>
         </div>
       </div>
