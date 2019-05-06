@@ -1,0 +1,248 @@
+{
+  "contractName": "Adopters",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "_adopters",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0xc5c9c5c3"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"_adopters\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adopters.sol\":\"Adopters\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adopters.sol\":{\"keccak256\":\"0x69d44036673dc63022f31978e9db1d3c4e9dc70b706a615736cea6b73a18c835\",\"urls\":[\"bzzr://fc58d11ca67e4434812cc7f57f8d1b4eb954480ee5679368595c9c410198db2c\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061011b806100206000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063c5c9c5c3146044575b600080fd5b348015604f57600080fd5b50607960048036036020811015606457600080fd5b810190808035906020019092919050505060bb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008160108110151560c957fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058202cd7c78b0f97b1f4b171f430152da40c9226267d2f09684412a5b6336f7987a40029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063c5c9c5c3146044575b600080fd5b348015604f57600080fd5b50607960048036036020811015606457600080fd5b810190808035906020019092919050505060bb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008160108110151560c957fe5b016000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058202cd7c78b0f97b1f4b171f430152da40c9226267d2f09684412a5b6336f7987a40029",
+  "sourceMap": "25:52:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:52:0;;;;;;;",
+  "deployedSourceMap": "25:52:0:-;;;;;;;;;;;;;;;;;;;;;;;;46:28;;8:9:-1;5:2;;;30:1;27;20:12;5:2;46:28:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;46:28:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract Adopters {\n\taddress[16] public _adopters;\n}\n",
+  "sourcePath": "/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adopters.sol",
+  "ast": {
+    "absolutePath": "/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adopters.sol",
+    "exportedSymbols": {
+      "Adopters": [
+        6
+      ]
+    },
+    "id": 7,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "Adopters",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5,
+            "name": "_adopters",
+            "nodeType": "VariableDeclaration",
+            "scope": 6,
+            "src": "46:28:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$16_storage",
+              "typeString": "address[16]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 2,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "46:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 4,
+              "length": {
+                "argumentTypes": null,
+                "hexValue": "3136",
+                "id": 3,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": false,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "54:2:0",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": null,
+                  "typeString": null
+                },
+                "value": "16"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "46:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$16_storage_ptr",
+                "typeString": "address[16]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "25:52:0"
+      }
+    ],
+    "src": "0:78:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adopters.sol",
+    "exportedSymbols": {
+      "Adopters": [
+        6
+      ]
+    },
+    "id": 7,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "Adopters",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5,
+            "name": "_adopters",
+            "nodeType": "VariableDeclaration",
+            "scope": 6,
+            "src": "46:28:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$16_storage",
+              "typeString": "address[16]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 2,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "46:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 4,
+              "length": {
+                "argumentTypes": null,
+                "hexValue": "3136",
+                "id": 3,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": false,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "54:2:0",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": null,
+                  "typeString": null
+                },
+                "value": "16"
+              },
+              "nodeType": "ArrayTypeName",
+              "src": "46:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$16_storage_ptr",
+                "typeString": "address[16]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "25:52:0"
+      }
+    ],
+    "src": "0:78:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {
+    "1557075552860": {
+      "events": {},
+      "links": {},
+      "address": "0x617FA811529999e6a840Dc79C89622Af09cD4d33",
+      "transactionHash": "0xae7812f0c2f6808c86247753640d8ff51c72e2bdb559c9b957e5af1407a54c46"
+    },
+    "1557078028478": {
+      "events": {},
+      "links": {},
+      "address": "0x480f8E1C9CEaaEA481B1fa550C3Ee26C52A9b575",
+      "transactionHash": "0x22f7dfb0705ef11bf26af441dece6ed370d6ca938c680f7ab7b4b7308d04dd9b"
+    }
+  },
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-05-06T16:14:18.975Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

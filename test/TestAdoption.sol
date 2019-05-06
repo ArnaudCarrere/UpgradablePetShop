@@ -6,7 +6,7 @@ import "../contracts/Adoption.sol";
 
 contract TestAdoption {
  // The address of the adoption contract to be tested
- Adoption adoption = Adoption(DeployedAddresses.Adoption());
+ Adoption adoption = Adoption(DeployedAddresses.Proxy());
 
  // The id of the pet that will be used for testing
  uint expectedPetId = 8;
@@ -23,7 +23,7 @@ contract TestAdoption {
 
  // Testing retrieval of a single pet's owner
  function testGetAdopterAddressByPetId() public {
-  address adopter = adoption.adopters(expectedPetId);
+  address adopter = adoption._adopters(expectedPetId);
 
   Assert.equal(adopter, expectedAdopter, "Owner of the expected pet should be this contract");
  }
