@@ -44,3 +44,9 @@ https://medium.com/quillhash/how-to-write-upgradable-smart-contracts-in-solidity
    - 2 days pass. B -> C (5 days remaining)
    - Frontend should reflect the owner of the pet and the current holder of the pet and what duration is left.
 8. Allow pets to be fed. If they are not fed by the adopter within 1 day, the pet is dead (“burned”) and no action can be taken on the dead pet.
+
+
+## NOTES:
+Adoption_F2.sol defines a new structure to store pet informations on the blockchain. When a pet is adopted, all its informations are stored on the blockchain. 
+However, an error remains in the transaction to update pet informations..
+
