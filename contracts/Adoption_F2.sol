@@ -4,8 +4,7 @@ import './Adoption_F1.sol';
 
 contract Adoption_F2 is Adoption_F1 {
 
-  struct petInfo {
-    address owner;
+  struct petStruct {
     string picture;
     string name;
     uint8 age;
@@ -15,14 +14,14 @@ contract Adoption_F2 is Adoption_F1 {
 
   modifier onlyPetOwner(uint petId){
     require(petId >= 0 && petId <= 15);
-    require(adopters[petId].owner == msg.sender);
+    require(adopters[petId] == msg.sender);
     _;
   }
 
-  petInfo[16] public adopters;
+  petStruct[16] public petInfo;
 
-  // Adopting a pet
-  function adopt(
+  // Register a pet - store its info in the blockchain - while adopting
+  function registerPet(
     uint petId,
     string memory picture,
     string memory name,
@@ -32,39 +31,32 @@ contract Adoption_F2 is Adoption_F1 {
     public returns (uint){
 
     require(petId >= 0 && petId <= 15);
-    adopters[petId] = petInfo(msg.sender, picture, name, age, breed, location);
-
+    petInfo[petId] = petStruct(picture, name, age, breed, location);
     return petId;
   }
 
-	// Transfer ownership of an adopted pet
-	function transferOwnership(uint petId, address dest) public onlyPetOwner(petId) returns (address) {
-		adopters[petId].owner = dest;
-		return adopters[petId].owner;
-	}
-
   //Update image giving its url
   function updatePicture(uint petId, string memory url) public onlyPetOwner(petId) returns (string memory){
-    adopters[petId].picture = url;
-    return adopters[petId].picture;
+    petInfo[petId].picture = url;
+    return petInfo[petId].picture;
   }
 
   //Update name
   function updateName(uint petId, string memory newName) public onlyPetOwner(petId) returns (string memory){
-    adopters[petId].name = newName;
-    return adopters[petId].name;
+    petInfo[petId].name = newName;
+    return petInfo[petId].name;
   }
 
   //Update age
   function updateAge(uint petId, uint8 newAge) public onlyPetOwner(petId) returns (uint8){
-    adopters[petId].age = newAge;
-    return adopters[petId].age;
+    petInfo[petId].age = newAge;
+    return petInfo[petId].age;
   }
 
   //Update image giving its url
   function updateLocation(uint petId, string memory newLocation) public onlyPetOwner(petId) returns (string memory){
-    adopters[petId].location = newLocation;
-    return adopters[petId].location;
+    petInfo[petId].location = newLocation;
+    return petInfo[petId].location;
   }
 
 }
