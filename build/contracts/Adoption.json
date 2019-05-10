@@ -18,7 +18,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x43ae80d3"
     },
     {
       "constant": false,
@@ -37,7 +38,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x8588b2c5"
     },
     {
       "constant": true,
@@ -51,7 +53,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x3de4eb17"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getAdopters\",\"outputs\":[{\"name\":\"\",\"type\":\"address[16]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"adopters\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"petId\",\"type\":\"uint256\"}],\"name\":\"adopt\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adoption.sol\":\"Adoption\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bastienchevallier/Documents/UC Berkeley/03-Blockchain/03-Final test project/UpgradablePetShop/contracts/Adoption.sol\":{\"keccak256\":\"0x71f854f8874220701df2f9545b348a9b3ef1ea1f9a99eeb38d88f5435a00b92d\",\"urls\":[\"bzzr://31a335aa8b18a0a8bb0fbbb05b77f1b98801924071acc893b54f5a1f23c223f5\"]}},\"version\":1}",
@@ -290,10 +293,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        713,
-                        714
+                        683,
+                        684
                       ],
-                      "referencedDeclaration": 713,
+                      "referencedDeclaration": 683,
                       "src": "150:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -376,7 +379,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 710,
+                        "referencedDeclaration": 680,
                         "src": "207:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -850,10 +853,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        713,
-                        714
+                        683,
+                        684
                       ],
-                      "referencedDeclaration": 713,
+                      "referencedDeclaration": 683,
                       "src": "150:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -936,7 +939,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 710,
+                        "referencedDeclaration": 680,
                         "src": "207:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1185,9 +1188,16 @@
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1557500870171": {
+      "events": {},
+      "links": {},
+      "address": "0x37e6Cc865D5dBDdBF0a3dAB321aFc9Ef38A4ab4C",
+      "transactionHash": "0x651728ab4cae3c8b5457b733ac2b695e918acaf104aa5958b8763c782b7a2e40"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-06T18:05:57.800Z",
+  "updatedAt": "2019-05-10T15:47:13.607Z",
   "devdoc": {
     "methods": {}
   },

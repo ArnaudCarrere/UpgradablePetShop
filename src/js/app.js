@@ -17,6 +17,7 @@ App = {
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
         petTemplate.find('.btn-unadopt').attr('data-id', data[i].id);
         petTemplate.find('.btn-transfer').attr('data-id', data[i].id);
+        petTemplate.find('.btn-updatePetInfo').attr('data-id', data[i].id);
 
         petsRow.append(petTemplate.html());
       }
@@ -43,7 +44,7 @@ App = {
    }
    // If no injected web3 instance is detected, fall back to Ganache
    else {
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+      App.web3Provider = new Web3.providers.HttpProvider('127.0.0.1:7545');
     }
     web3 = new Web3(App.web3Provider);
     return App.initContract();
@@ -59,7 +60,7 @@ App = {
       App.contracts.Proxy.setProvider(App.web3Provider);
     });
 
-    $.getJSON('Adoption_F1.json', function(data) {
+    $.getJSON('Adoption_F2.json', function(data) {
       // Get the necessary contract artifact file and instantiate it with truffle-contract
       var AdoptionArtifact = data;
       App.contracts.Adoption = TruffleContract(AdoptionArtifact);
@@ -80,7 +81,12 @@ App = {
       var petId = $(this).data('id');
       $(".modal-body #petId").val(petId);
     });
+    $(document).on("click", ".btn-update", function () {
+      var petId = $(this).data('id');
+      $(".modal-body #petId").val(petId);
+    });
     $(document).on('click', '.btn-sendTransfer', App.handleTransfer);
+    $(document).on('click', '.btn-updatePetInfo', App.handlePetInfoUpdate);
   },
 
   markAdopted: function(adopters, account) {
@@ -115,6 +121,12 @@ App = {
     event.preventDefault();
 
     var petId = parseInt($(event.target).data('id'));
+    var picture = $('.panel-pet').eq(petId).find('.img-rounded').attr('src');
+    var name = $('.panel-pet').eq(petId).find('.panel-title').text();
+    var age = $('.panel-pet').eq(petId).find('.pet-age').text() ;
+    var breed = $('.panel-pet').eq(petId).find('.pet-breed').text() ;
+    var location = $('.panel-pet').eq(petId).find('.pet-location').text() ;
+
     var adoptionInstance;
 
     web3.eth.getAccounts(function(error, accounts) {
@@ -129,6 +141,9 @@ App = {
 
         // Execute adopt as a transaction by sending account
         return adoptionInstance.adopt(petId, {from: account});
+      }).then(function(result){
+        console.log('Registered')
+        return adoptionInstance.registerPet(petId, picture, name, age, breed, location);
       }).then(function(result) {
         return App.markAdopted();
       }).catch(function(err) {
@@ -182,6 +197,53 @@ App = {
 
         // Execute adopt as a transaction by sending account
         return adoptionInstance.transferOwnership(petId, dest, {from: account});
+      }).then(function(result) {
+        return App.markAdopted();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
+  },
+
+  handlePetInfoUpdate: function(event) {
+    event.preventDefault();
+
+    var petId = parseInt($(".modal-body #petId").val());
+    var img = String($(".modal-body #newImage").val());
+    var name = String($(".modal-body #newName").val());
+    var age = parseInt($(".modal-body #newAge").val());
+    var location = String($(".modal-body #newLocation").val());
+    var adoptionInstance;
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.Proxy.deployed().then(function(proxy) {
+        adoptionInstance = App.contracts.Adoption.at(proxy.address);
+
+        // Execute, if needed, functions to update pet info on the blockchain
+        if (img){
+          console.log("img_update");
+          return adoptionInstance.updatePicture(petId, img, {from: account});
+        }
+        if (name){
+          console.log("name_update");
+          console.log(typeof(name))
+          console.log(typeof(petId));
+          return adoptionInstance.updateName(petId, name, {from: account});
+        }
+        if (age){
+          console.log("age_update");
+          return adoptionInstance.updateAge(petId, age, {from: account});
+        }
+        if (location){
+          console.log("location_update");
+          return adoptionInstance.updateName(petId, location, {from: account});
+        }
       }).then(function(result) {
         return App.markAdopted();
       }).catch(function(err) {

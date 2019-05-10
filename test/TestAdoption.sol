@@ -2,12 +2,12 @@ pragma solidity ^0.5.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/Adoption_F1.sol";
+import "../contracts/Adoption_F2.sol";
 import "../contracts/OwnedUpgradeabilityProxy.sol";
 
 contract TestAdoption {
 	// The address of the adoption contract to be tested
-	Adoption_F1 adoption = Adoption_F1(DeployedAddresses.OwnedUpgradeabilityProxy());
+	Adoption_F2 adoption = Adoption_F2(DeployedAddresses.OwnedUpgradeabilityProxy());
 
 	// The id of the pet that will be used for testing
 	uint expectedPetId = 8;

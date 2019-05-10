@@ -41,7 +41,33 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary btn-sendTransfer"" data-dismiss="modal">Transfer</button>
+              <button type="button" class="btn btn-primary btn-sendTransfer" data-dismiss="modal">Transfer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pet info update modal -->
+      <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label class="col-form-label">New image</label>
+                  <input type="url" class="form-control" id="newImage">
+                  <label class="col-form-label">New name</label>
+                  <input type="url" class="form-control" id="newName">
+                  <label class="col-form-label">New age</label>
+                  <input type="url" class="form-control" id="newAge">
+                  <label class="col-form-label">New location</label>
+                  <input type="url" class="form-control" id="newLocation">
+                  <input class="hidden" type="text" id="petId" value=""/>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-updatePetInfo" data-dismiss="modal">Update</button>
             </div>
           </div>
         </div>
@@ -68,6 +94,7 @@
             <span class="pet-adopter-end">0x6907dCd77398778Dd7554d61e5338D908C465d8C</span><br/><br/>
             <button class="btn btn-default btn-adopt" type="button" data-id="0">Adopt</button>
             <button class="btn btn-default btn-transfer" type="button" data-id="0" data-dest="0x0000000000000000000000000000000000000000" data-toggle="modal" data-target="#transferModal">Transfer</button>
+            <button class="btn btn-default btn-update" type="button" data-id="0" data-dest="0x0000000000000000000000000000000000000000" data-toggle="modal" data-target="#updateModal">Update</button>
             <button class="btn btn-default btn-unadopt" type="button" data-id="0">Unadopt</button>
           </div>
         </div>
