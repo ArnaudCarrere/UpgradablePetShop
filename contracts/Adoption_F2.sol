@@ -42,13 +42,13 @@ contract Adoption_F2 is Adoption_F1 {
   }
 
   //Update name
-  function updateName(uint petId, string memory newName) public onlyPetOwner(petId) returns (string memory){
+  function updateName(uint petId, string memory newName) public  onlyPetOwner(petId)returns (string memory){
     petInfo[petId].name = newName;
     return petInfo[petId].name;
   }
 
   //Update age
-  function updateAge(uint petId, uint8 newAge) public onlyPetOwner(petId) returns (uint8){
+  function updateAge(uint petId, uint8 newAge) public  onlyPetOwner(petId)returns (uint8){
     petInfo[petId].age = newAge;
     return petInfo[petId].age;
   }

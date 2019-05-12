@@ -17,7 +17,7 @@ App = {
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
         petTemplate.find('.btn-unadopt').attr('data-id', data[i].id);
         petTemplate.find('.btn-transfer').attr('data-id', data[i].id);
-        petTemplate.find('.btn-updatePetInfo').attr('data-id', data[i].id);
+        petTemplate.find('.btn-update').attr('data-id', data[i].id);
 
         petsRow.append(petTemplate.html());
       }
@@ -83,20 +83,20 @@ App = {
     });
     $(document).on("click", ".btn-update", function () {
       var petId = $(this).data('id');
-      $(".modal-body #petId").val(petId);
+      $(".modal-body #petIdUpdate").val(petId);
     });
     $(document).on('click', '.btn-sendTransfer', App.handleTransfer);
     $(document).on('click', '.btn-updatePetInfo', App.handlePetInfoUpdate);
   },
 
-  markAdopted: function(adopters, account) {
+  markAdopted: async function(adopters, account){
     var adoptionInstance;
 
     App.contracts.Proxy.deployed().then(function(proxy) {
       adoptionInstance = App.contracts.Adoption.at(proxy.address);
 
       return adoptionInstance.getAdopters.call();
-    }).then(function(adopters) {
+    }).then( async function(adopters) {
       for (i = 0; i < adopters.length; i++) {
         $('.panel-pet').eq(i).find('.pet-adopter').text(adopters[i].substring(0, 21));
         $('.panel-pet').eq(i).find('.pet-adopter-end').text(adopters[i].substring(21, 42));
@@ -104,6 +104,15 @@ App = {
           $('.panel-pet').eq(i).find('button').eq(2).show();
           $('.panel-pet').eq(i).find('button').eq(1).show();
           $('.panel-pet').eq(i).find('button').eq(0).hide();
+          //Check for pet info update on the blockchain
+          await adoptionInstance.petInfo(i).then(function(petInfo){
+            console.log()
+            $('.panel-pet').eq(i).find('.img-rounded').attr('src', petInfo[0]);
+            $('.panel-pet').eq(i).find('.panel-title').text(petInfo[1]);
+            $('.panel-pet').eq(i).find('.pet-age').text(petInfo[2]);
+            $('.panel-pet').eq(i).find('.pet-breed').text(petInfo[3]);
+            $('.panel-pet').eq(i).find('.pet-location').text(petInfo[4]);
+          });
         } else {
           $('.panel-pet').eq(i).find('.pet-adopter').text("None");
           $('.panel-pet').eq(i).find('.pet-adopter-end').text("");
@@ -116,6 +125,8 @@ App = {
     console.log(err.message);
   });
   },
+
+
 
   handleAdopt: function(event) {
     event.preventDefault();
@@ -208,12 +219,13 @@ App = {
   handlePetInfoUpdate: function(event) {
     event.preventDefault();
 
-    var petId = parseInt($(".modal-body #petId").val());
+    var petId = parseInt($(".modal-body #petIdUpdate").val());
     var img = String($(".modal-body #newImage").val());
     var name = String($(".modal-body #newName").val());
     var age = parseInt($(".modal-body #newAge").val());
     var location = String($(".modal-body #newLocation").val());
     var adoptionInstance;
+    console.log(petId);
 
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
@@ -227,22 +239,30 @@ App = {
 
         // Execute, if needed, functions to update pet info on the blockchain
         if (img){
-          console.log("img_update");
-          return adoptionInstance.updatePicture(petId, img, {from: account});
+          //Json update
+          $.getJSON('../pets.json', function(data) {
+        	   data[petId].picture = img;
+          });
+          //Update on the blockchain
+          return adoptionInstance.updatePicture(petId, img);
         }
         if (name){
-          console.log("name_update");
-          console.log(typeof(name))
-          console.log(typeof(petId));
-          return adoptionInstance.updateName(petId, name, {from: account});
+          $.getJSON('../pets.json', function(data) {
+             data[petId].name = name;
+          });
+          return adoptionInstance.updateName(petId, name);
         }
         if (age){
-          console.log("age_update");
-          return adoptionInstance.updateAge(petId, age, {from: account});
+          $.getJSON('../pets.json', function(data) {
+             data[petId].age = age;
+          });
+          return adoptionInstance.updateAge(petId, age);
         }
         if (location){
-          console.log("location_update");
-          return adoptionInstance.updateName(petId, location, {from: account});
+          $.getJSON('../pets.json', function(data) {
+             data[petId].location = location;
+          });
+          return adoptionInstance.updateName(petId, location);
         }
       }).then(function(result) {
         return App.markAdopted();
@@ -250,6 +270,13 @@ App = {
         console.log(err.message);
       });
     });
+  },
+
+  saveText: function(text, filename){
+    var a = document.createElement('a');
+    a.setAttribute('href', 'data:text/plain;charset=utf-u,'+encodeURIComponent(text));
+    a.setAttribute('download', filename);
+    a.click()
   }
 
 };

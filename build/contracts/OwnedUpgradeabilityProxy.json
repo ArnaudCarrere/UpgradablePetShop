@@ -3468,7 +3468,7 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
-    "1557500870171": {
+    "1557578898189": {
       "events": {
         "0x5a3e66efaa1e445ebd894728a69d6959842ea1e97bd79b892797106e270efcd9": {
           "anonymous": false,
@@ -3503,12 +3503,50 @@
         }
       },
       "links": {},
-      "address": "0x80ab927C8951Ae0CB992718808e96283fEd77E14",
-      "transactionHash": "0x6dc7db22c29cf63a00c5b74a43b8471b3bbcebd31f949928a44d9e6a24879efd"
+      "address": "0x0eDC61632389133c2A53638C4cCC320F51351376",
+      "transactionHash": "0x17c7188f607ad1b1093d91b9fd4c8874d75db3742cffe536c1db3ccd7a1979a2"
+    },
+    "1557671370479": {
+      "events": {
+        "0x5a3e66efaa1e445ebd894728a69d6959842ea1e97bd79b892797106e270efcd9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "ProxyOwnershipTransferred",
+          "type": "event",
+          "signature": "0x5a3e66efaa1e445ebd894728a69d6959842ea1e97bd79b892797106e270efcd9"
+        },
+        "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "implementation",
+              "type": "address"
+            }
+          ],
+          "name": "Upgraded",
+          "type": "event",
+          "signature": "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b"
+        }
+      },
+      "links": {},
+      "address": "0xaE30149aB4cae368D345A16059aAF6c286224EC6",
+      "transactionHash": "0x75f00da096b299709090d5c1363b66150c1a7e3ff7f225fd73276008712d1f04"
     }
   },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-05-10T15:47:14.123Z",
+  "updatedAt": "2019-05-12T14:31:40.162Z",
   "devdoc": {
     "details": "This contract combines an upgradeability proxy with basic authorization control functionalities",
     "methods": {

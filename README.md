@@ -47,6 +47,5 @@ https://medium.com/quillhash/how-to-write-upgradable-smart-contracts-in-solidity
 
 
 ## NOTES:
-Adoption_F2.sol defines a new structure to store pet informations on the blockchain. When a pet is adopted, all its informations are stored on the blockchain. 
-However, an error remains in the transaction to update pet informations..
-
+Adoption_F2.sol defines a new structure to store pet informations on the blockchain. When a pet is adopted, all its informations are stored on the blockchain (causing another transaction).
+Features 1, 2 and 3 are completed.
